@@ -1,5 +1,6 @@
 defmodule TagOnEcto.Tagging do
   use Ecto.Schema
+  import Ecto.Changeset
   alias TagOnEcto.Tag
 
   schema "taggings" do
