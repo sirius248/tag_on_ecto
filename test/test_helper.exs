@@ -10,5 +10,4 @@ _ = Ecto.Migrator.up(TagOnEcto.TestRepo, 0, TestTagOnEcto.Migrations, log: false
 
 TagOnEcto.TestRepo.start_link
 ExUnit.start()
-
 Ecto.Adapters.SQL.Sandbox.mode(TagOnEcto.TestRepo, :manual)

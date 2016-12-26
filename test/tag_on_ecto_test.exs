@@ -1,8 +1,13 @@
 defmodule TagOnEctoTest do
-  use ExUnit.Case
+  use TagOnEcto.EctoCase
+  alias TestTagOnEcto.{Tag}
+  alias TagOnEcto.TestRepo
+
   doctest TagOnEcto
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  test "create tag" do
+    changeset = Tag.changeset(%Tag{}, %{name: "Elixir"})
+    user = TestRepo.insert! changeset
+    assert user.name == "Elixir"
   end
 end

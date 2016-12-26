@@ -1,10 +1,13 @@
 defmodule TestTagOnEcto.Tag do
   use Ecto.Schema
   import Ecto.Changeset
+  alias TestTagOnEcto.Tagging
 
   schema "tags" do
     field :name, :string
     has_many :taggings, Tagging
+
+    timestamps
   end
 
 
@@ -25,6 +28,8 @@ defmodule TestTagOnEcto.Tagging do
     belongs_to :tag, Tag
     field :taggable_id, :integer
     field :tagger_id, :integer
+
+    timestamps
   end
 
   def changeset(model, params \\ %{}) do

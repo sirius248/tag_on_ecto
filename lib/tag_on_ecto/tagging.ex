@@ -7,6 +7,8 @@ defmodule TagOnEcto.Tagging do
     belongs_to :tag, Tag
     field :taggable_id, :integer
     field :tagger_id, :integer
+
+    timestamps
   end
 
   def changeset(model, params \\ %{}) do

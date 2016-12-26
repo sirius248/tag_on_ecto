@@ -6,6 +6,8 @@ defmodule TagOnEcto.Tag do
   schema "tags" do
     field :name, :string
     has_many :taggings, Tagging
+
+    timestamps
   end
 
   def changeset(model, params \\ %{}) do
