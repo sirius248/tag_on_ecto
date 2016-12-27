@@ -1,3 +1,5 @@
+[![Build Status](https://semaphoreci.com/api/v1/long-polyglot/tag_on_ecto/branches/master/badge.svg)](https://semaphoreci.com/long-polyglot/tag_on_ecto)
+
 # TagOnEcto
 
 **TODO: Add description**
@@ -21,4 +23,3 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
       [applications: [:tag_on_ecto]]
     end
     ```
-
