@@ -12,12 +12,12 @@ defmodule TestTagOnEcto.Migrations do
 
     # Tagging table
     create table(:taggings) do
-      add :tag_id, references(:tags)
+      add :tag_id, :integer
       add :taggable_id, :integer
       add :taggable_type, :string
       add :tagger_id, :integer
       add :tagger_type, :string
-      
+
       timestamps
     end
     create index(:taggings, :taggable_id)

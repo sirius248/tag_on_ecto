@@ -27,7 +27,7 @@ defmodule TagOnEctoTest do
     tag = TestRepo.insert!(Tag.changeset(%Tag{}, %{name: "phoenix"}))
     post = TestRepo.insert!(Post.changeset(%Post{}, %{title: "Elixir and Phoenix"}))
 
-    tagging = TestRepo.insert!(
+    TestRepo.insert!(
       Tagging.changeset(%Tagging{}, %{
         tag_id: tag.id,
         tagger_id: user.id,
@@ -36,5 +36,23 @@ defmodule TagOnEctoTest do
         taggable_type: "Post"
       })
     )
+  end
+
+  test "tag with many taggings" do
+    tag = TestRepo.insert!(Tag.changeset(%Tag{}, %{name: "phoenix"}))
+    TestRepo.insert!(Tagging.changeset(%Tagging{}, %{tag_id: tag.id}))
+    TestRepo.insert!(Tagging.changeset(%Tagging{}, %{tag_id: tag.id}))
+    tag = TestRepo.preload(tag, [:taggings])
+    assert Enum.count(tag.taggings) == 2
+  end
+
+  test "remove tag also remove taggings" do
+    tag = TestRepo.insert!(Tag.changeset(%Tag{}, %{name: "phoenix"}))
+    TestRepo.insert!(Tagging.changeset(%Tagging{}, %{tag_id: tag.id}))
+    TestRepo.insert!(Tagging.changeset(%Tagging{}, %{tag_id: tag.id}))
+
+    assert Enum.count(TestRepo.all(Tagging)) == 2
+    TestRepo.delete!(tag)
+    assert Enum.count(TestRepo.all(Tagging)) == 0
   end
 end
