@@ -5,7 +5,7 @@ defmodule TestTagOnEcto.Migrations do
     # Tag table
     create table(:tags) do
       add :name, :string
-      timestamps
+      timestamps()
     end
     create unique_index(:tags, [:name])
     # End
@@ -18,7 +18,7 @@ defmodule TestTagOnEcto.Migrations do
       add :tagger_id, :integer
       add :tagger_type, :string
 
-      timestamps
+      timestamps()
     end
     create index(:taggings, :taggable_id)
     create index(:taggings, :tagger_id)
@@ -28,14 +28,14 @@ defmodule TestTagOnEcto.Migrations do
     create table(:users) do
       add :name, :string
       add :email, :string
-      timestamps
+      timestamps()
     end
     # End
 
     # Post table
     create table(:posts) do
       add :title, :string
-      timestamps
+      timestamps()
     end
     # End
   end
